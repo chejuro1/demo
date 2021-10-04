@@ -18,7 +18,7 @@
   
 // }
 
-node {
+node('maven' {
     checkout scm
 
     docker.withRegistry('https:/quay.io', 'julescheindjou') {

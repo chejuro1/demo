@@ -6,19 +6,28 @@
 //   }
 // }
 
-node('maven') {
-  git 'https://github.com/chejuro1/demo.git' // checks out Dockerfile and some project sources
+// node('maven') {
+//   git 'https://github.com/chejuro1/demo.git' // checks out Dockerfile and some project sources
   
-  withDockerRegistry(credentialsId: 'chejuro', toolName: 'docker ') {
+//   withDockerRegistry(credentialsId: 'julescheindjou', toolName: 'docker ', url: 'quay.io') {
 
 //   docker.build('myapp').push('latest')
-    docker.version
-}
+// }
   
  
   
+// }
+
+node {
+    checkout scm
+
+    docker.withRegistry('https:/quay.io', 'julescheindjou') {
+
+        def customImage = docker.build("my-image:${env.BUILD_ID}")
+
+        /* Push the container to the custom Registry */
+        customImage.push()
+    }
 }
-
-
 
 

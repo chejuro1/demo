@@ -31,7 +31,8 @@
 // }
 
 pipeline {
-   agent any
+  agent { label 'maven'
+  }
    stages {
       stage('Hello') { 
          steps {

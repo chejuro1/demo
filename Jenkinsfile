@@ -11,7 +11,8 @@ node('maven') {
   
   withDockerRegistry(credentialsId: 'chejuro', toolName: 'docker ') {
 
-  docker.build('myapp').push('latest')
+//   docker.build('myapp').push('latest')
+    docker.version
 }
   
  

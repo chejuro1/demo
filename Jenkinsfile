@@ -9,7 +9,7 @@
 node('maven') {
   git 'https://github.com/chejuro1/demo.git' // checks out Dockerfile and some project sources
   
-  withDockerRegistry(credentialsId: 'julescheindjou', toolName: 'docker ', url: 'https://quay.io') {
+  withDockerRegistry(credentialsId: 'chejuro', toolName: 'docker ') {
 
   docker.build('myapp').push('latest')
 }

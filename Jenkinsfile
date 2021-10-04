@@ -14,10 +14,8 @@ pipeline {
 
     stage('Build') {
       agent {
-        docker {
-          image 'docker:19.03.12'
-          args '''--docker-volumes "/certs/client"
- --docker-privileged'''
+        dockerfile {
+          filename 'dockerfile'
         }
 
       }

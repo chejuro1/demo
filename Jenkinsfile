@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'maven'
+      label 'nomaven'
     }
 
   }
@@ -15,6 +15,12 @@ oc start-build greeting-console  --follow --wait'''
     }
 
     stage('Docker_lint') {
+      agent {
+        node {
+          label 'nodejs'
+        }
+
+      }
       steps {
         sh '''npm install -g dockerlint
 dockerlint Dockerfile'''

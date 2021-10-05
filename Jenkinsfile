@@ -6,21 +6,10 @@ pipeline {
 
   }
   stages {
-    stage('Hello') {
+    stage('Release') {
       steps {
-        echo 'Hello World!'
-      }
-    }
-
-    stage('Build') {
-      agent {
-        dockerfile {
-          filename 'dockerfile'
-        }
-
-      }
-      steps {
-        sh 'docker build -t maven .'
+        sh '''oc project react-intro2
+oc start-build greeting-console  --follow --wait'''
       }
     }
 

@@ -8,7 +8,8 @@ pipeline {
   stages {
     stage('Release') {
       steps {
-        sh '''oc project openshift-operators
+        sh '''ls 
+oc project openshift-operators
 oc start-build greeting-console  --follow --wait'''
       }
     }
